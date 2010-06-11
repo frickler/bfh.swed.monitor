@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<project name="Build file for PM Project" default="compile" basedir=".">
+
+  <!-- build-specific properties -->
+  <property file="${user.home}/.ant.properties" />
+  <property file="build.properties" />
+
+  <!-- set global properties for this build -->
+  <property name="src.dir" value="src" />
+  <property name="test.dir" value="test" />
+  <property name="build.dir" value="build" />
+  <property name="javadoc.dir" value="javadoc" />
+  <property name="tmp.dir" value="pm" />
+
+  <!-- main class for run target -->
+  <property name="main.class" value="mypackage.MyClass" />
+
+  <!-- =================================================================== -->
+  <!-- Class paths                                                         -->
+  <!-- =================================================================== -->
+  <path id="compile.class.path">
+    <pathelement location="${junit.lib.dir}/${junit.jar.file}" />
+  </path>
+
+  <path id="run.class.path">
+    <pathelement location="${build.dir}" />
+    <pathelement location="${junit.lib.dir}/${junit.jar.file}" />
+  </path>
+
+  <path id="javadoc.src.path">
+    <pathelement location="${src.dir}" />
+  </path>
+
+  <!-- =================================================================== -->
+  <!-- Init targets                                                        -->
+  <!-- =================================================================== -->
+  <target name="init">
+    <!-- Create the time stamp -->
+    <tstamp />
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build.dir}" />
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Compile: Default                                                    -->
+  <!-- =================================================================== -->
+  <target name="compile" depends="init" description="Compiles all Java sources">
+    <javac destdir="${build.dir}" classpathref="compile.class.path" deprecation="on">
+      <src path="${src.dir}" />
+      <src path="${test.dir}" />
+      <include name="**/*.java" />
+    </javac>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Run and Run-tests targets                                           -->
+  <!-- =================================================================== -->
+  <target name="run" depends="compile" description="Runs the program">
+    <java classname="${main.class}" fork="yes" classpathref="run.class.path" />
+  </target>
+
+
+  <target name="run-tests" depends="compile" description="Runs all the tests">
+    <junit printsummary="yes">
+      <classpath refid="run.class.path" />
+      <batchtest fork="yes" todir="${reports.tests}">
+        <fileset dir="${build.dir}">
+          <include name="**/*Test.class" />
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <!-- =================================================================== -->
+  <!-- Documentation                                                       -->
+  <!-- =================================================================== -->
+  <target name="javadoc" description="Generate JavaDoc HTML pages"
+          depends="init">
+    <mkdir dir="${javadoc.dir}" />
+    <javadoc sourcepathref="javadoc.src.path"
+             classpathref="compile.class.path" packagenames="*"
+             destdir="${javadoc.dir}" author="true" use="true"
+             verbose="false" package="true">
+      <link href="http://java.sun.com/j2se/1.5.0/docs/api/" />
+      <link href="http://www.junit.org/junit/javadoc/4.4/" />
+    </javadoc>
+  </target>
+
+
+  <!-- =================================================================== -->
+  <!-- Zip targets                                                         -->
+  <!-- =================================================================== -->
+
+  <target name="zip" depends="clean, javadoc"
+          description="Builds the ZIP file containing all stuff">
+    <delete file="pm.zip" />
+    <delete dir="${tmp.dir}" />
+    <mkdir dir="${tmp.dir}" />
+    <mkdir dir="${tmp.dir}/src" />
+    <mkdir dir="${tmp.dir}/doc" />
+    <mkdir dir="${tmp.dir}/javadoc" />
+    <copy file="build.xml" todir="${tmp.dir}" />
+    <copy file="build.properties" todir="${tmp.dir}" />
+    <copy file="README" todir="${tmp.dir}" />
+    <copy todir="${tmp.dir}/src">
+      <fileset dir="src" />
+    </copy>
+    <copy todir="${tmp.dir}/doc">
+      <fileset dir="doc" />
+    </copy>
+    <copy todir="${tmp.dir}/javadoc">
+      <fileset dir="javadoc" />
+    </copy>
+    <zip destfile="pm.zip"
+         basedir="."
+         includes="${tmp.dir}/**">
+    </zip>
+    <delete dir="${tmp.dir}" />
+  </target>
+
+
+  <!-- =================================================================== -->
+  <!-- Clean targets                                                       -->
+  <!-- =================================================================== -->
+  <target name="clean" description="Removes generated class files">
+    <!-- Delete the ${build.dir} directory tree -->
+    <delete dir="${build.dir}" />
+  </target>
+
+  <target name="clean-javadoc" description="Removes generated Javadoc files">
+    <delete dir="${javadoc.dir}" />
+  </target>
+
+  <target name="clean-all" depends="clean, clean-javadoc"
+          description="Removes all generated artifacts">
+    <delete dir="${tmp.dir}" />
+    <delete file="pm.zip" />
+  </target>
+
+</project>

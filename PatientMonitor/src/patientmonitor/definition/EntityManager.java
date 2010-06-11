@@ -5,6 +5,8 @@
 
 package patientmonitor.definition;
 
+import patient.exceptions.ObjectNotFoundException;
+
 /**
  * Stores the Datas
  *
