@@ -14,11 +14,13 @@ import patient.exceptions.LoginException;
 public interface LoginController {
 
     /**
-     * 
-     * @param doctorId
-     * @param password
-     * @throws LoginException
+     * Creates a new sessioncontroller, if the doctorId and the password is valid
+     *
+     * @param doctorId The ID of the doctor
+     * @param password The password
+     * @return returns a sessioncontroller
+     * @throws LoginException If no doctor with the given Id exists or if the password does not match
      */
-    public void login(Integer doctorId, String password) throws LoginException;
+    public SessionController login(Integer doctorId, String password) throws LoginException;
 
 }
