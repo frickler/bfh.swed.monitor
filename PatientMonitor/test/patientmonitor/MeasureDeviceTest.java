@@ -41,44 +41,14 @@ public class MeasureDeviceTest {
     }
 
     /**
-     * Test of initialize method, of class MeasureDevice.
-     */
-    @Test
-    public void testInitialize() throws Exception {
-        System.out.println("initialize");
-        Date begin = null;
-        Date end = null;
-        Integer frequency = null;
-        MeasureDevice instance = new MeasureDevice();
-        instance.initialize(begin, end, frequency);
-        Assert.assertTrue(false);
-    }
-
-    /**
-     * Test of setPatient method, of class MeasureDevice.
-     */
-    @Test
-    public void testSetPatient() {
-        System.out.println("setPatient");
-        Patient patient = null;
-        MeasureDevice instance = new MeasureDevice();
-        instance.setPatient(patient);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of performMeasure method, of class MeasureDevice.
      */
     @Test
     public void testPerformMeasure() throws Exception {
-        System.out.println("performMeasure");
         MeasureDevice instance = new MeasureDevice();
-        Integer expResult = null;
-        Integer result = instance.performMeasure();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        float result = instance.performMeasure();
+        Assert.assertTrue(result > 0.0);
+        
     }
 
 }

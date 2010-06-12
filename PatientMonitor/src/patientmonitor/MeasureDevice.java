@@ -28,8 +28,8 @@ public class MeasureDevice implements Device{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Integer performMeasure() throws NoPatientAssignedException {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public float performMeasure() throws NoPatientAssignedException {
+        return 37.3f;
     }
 
 }

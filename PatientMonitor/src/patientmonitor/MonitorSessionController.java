@@ -6,6 +6,7 @@
 package patientmonitor;
 
 import java.util.Date;
+import patient.exceptions.DeviceNotAssignedException;
 import patientmonitor.definition.ObservationPeriod;
 import patientmonitor.definition.SessionController;
 
@@ -15,9 +16,6 @@ import patientmonitor.definition.SessionController;
  */
 public class MonitorSessionController implements SessionController{
 
-    public void testMeasure() {
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
 
     public void logout() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -40,6 +38,10 @@ public class MonitorSessionController implements SessionController{
     }
 
     public ObservationPeriod consultMeasure(Integer patientId, Integer observatoinId, Date from, Date to) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Integer testMeasure() throws DeviceNotAssignedException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

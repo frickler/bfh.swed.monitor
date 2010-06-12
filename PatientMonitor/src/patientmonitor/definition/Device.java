@@ -36,6 +36,6 @@ public interface Device {
      * 
      * @return Returns the temperature
      */
-    public Integer performMeasure() throws NoPatientAssignedException;
+    public float performMeasure() throws NoPatientAssignedException;
 
 }
