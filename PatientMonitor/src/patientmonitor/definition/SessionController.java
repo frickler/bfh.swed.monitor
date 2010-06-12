@@ -27,9 +27,10 @@ public interface SessionController {
      * @param patientId The Id of the patient
      * @param patientName the name of the patient
      * @param patientPrename the prename of the patient
+     * @param password The password of the user
      * @throws ObjectNotFoundException if no patient can be found with the given ID
      */
-    public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename) throws ObjectNotFoundException;
+    public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename, String password) throws ObjectNotFoundException;
 
     /**
      * Defines a new Oobservation period

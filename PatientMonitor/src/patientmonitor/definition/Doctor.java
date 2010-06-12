@@ -5,6 +5,8 @@
 
 package patientmonitor.definition;
 
+import patient.exceptions.LoginException;
+
 /**
  *
  * @author krigu
@@ -16,8 +18,9 @@ public interface Doctor {
      *
      * @param password Password to login
      * @return True if password matches with stored password, false if they are not equal
+     * @throws LoginException if password does not match with the password in parameter
      */
-    public Boolean comparePassword(String password);
+    public Boolean comparePassword(String password) throws LoginException;
 
     /**
      * Adds a patient to the doctor

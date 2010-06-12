@@ -7,6 +7,7 @@ package patientmonitor;
 
 import java.util.Date;
 import patient.exceptions.DeviceNotAssignedException;
+import patient.exceptions.ObjectNotFoundException;
 import patientmonitor.definition.ObservationPeriod;
 import patientmonitor.definition.SessionController;
 
@@ -41,8 +42,13 @@ public class MonitorSessionController implements SessionController{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename, String password) throws ObjectNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     public Integer testMeasure() throws DeviceNotAssignedException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 
 }
