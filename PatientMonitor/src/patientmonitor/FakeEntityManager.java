@@ -21,28 +21,38 @@ import patientmonitor.definition.Patient;
  */
 public class FakeEntityManager implements EntityManager{
 
-    Set<Patient> patients;
-    Set<Doctor> doctors;
-    Set<Device> devices;
+    private Set<Patient> patients;
+    private Set<Doctor> doctors;
+    private Set<Device> devices;
+    private Set<ObservationPeriod> observations;
 
     public FakeEntityManager() {
         this.devices = new HashSet<Device>();
-        for (int i=1; i<30;i++) {
+        for (int i=1; i<=30;i++) {
            Device d = new MeasureDevice(i);
            this.devices.add(d);
         }
 
         this.doctors = new HashSet<Doctor>();
-        for (int i=1; i<30;i++) {
+        for (int i=1; i<=30;i++) {
            Doctor doc = new MonitorDoctor(i,"password" + i,"Hans" + i,"Maulwurf" + i);
            this.doctors.add(doc);
         }
 
         this.patients = new HashSet<Patient>();
-        for (int i=1; i<30;i++) {
-           Patient p = new MonitorPatient(i,"Hans","Maulwurf" + i);
+        for (int i=1; i<=30;i++) {
+           Patient p = this.createPatient("Hans","Maulwurf" + i);
            this.patients.add(p);
         }
+
+        this.observations = new HashSet<ObservationPeriod>();
+        for (int i=1; i<=30;i++) {
+           //MonitorObservationPeriod op = new MonitorObservationPeriod(i,this.getDoctor(i),this.getDevice(i),this.getPatient(i),);
+           //ööööööööhmmmm irgendwie datum erstelle!
+
+           //this.patients.add(op);
+        }
+        
 
     }
 
@@ -71,14 +81,17 @@ public class FakeEntityManager implements EntityManager{
     }
 
     public Patient createPatient(String patientName, String patientPrename) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Patient p = new MonitorPatient(this.patients.size()+1,"Barak","Obama");
+        this.patients.add(p);
+        return p;
+        
     }
 
     public ObservationPeriod getObservationPeriod(Integer observationPeriodId) throws ObjectNotFoundException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public List<ObservationPeriod> getObservationPeriodsOfPatient(Integer patientId) throws ObjectNotFoundException {
+    public Set<ObservationPeriod> getObservationPeriodsOfPatient(Integer patientId) throws ObjectNotFoundException {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

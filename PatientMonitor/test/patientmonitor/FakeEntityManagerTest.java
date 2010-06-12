@@ -6,6 +6,7 @@
 package patientmonitor;
 
 
+import java.util.Set;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -84,6 +85,9 @@ public class FakeEntityManagerTest {
     public void testCreatePatient() {
         Patient patient = this.manager.createPatient("Oliver","Biberstein");
         assertNotNull(patient);
+        Integer exceptedId = patient.getPatientId() + 1;
+        patient = this.manager.createPatient("Eric","Scholl");
+        assertEquals(exceptedId,patient.getPatientId());
     }
 
     /**
@@ -101,7 +105,7 @@ public class FakeEntityManagerTest {
      */
     @Test
     public void testGetObservationPeriodsOfPatient() throws Exception {
-
+        Set<ObservationPeriod> periods = this.manager.getObservationPeriodsOfPatient(3);
     }
 
     /**

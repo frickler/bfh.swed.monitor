@@ -61,7 +61,7 @@ public class MonitorObservationPeriod implements ObservationPeriod{
         return null;
     }
 
-    public MonitorObservationPeriod(Doctor doctor, Device device, Patient patient, Date from, Date to, Integer frequency) {
+    public MonitorObservationPeriod(Integer periodId,Doctor doctor, Device device, Patient patient, Date from, Date to, Integer frequency) {
         if (doctor == null || device == null || patient == null || from == null || to == null || frequency == null){
             throw new IllegalArgumentException();
         }

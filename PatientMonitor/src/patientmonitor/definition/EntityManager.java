@@ -5,7 +5,7 @@
 
 package patientmonitor.definition;
 
-import java.util.List;
+import java.util.Set;
 import patient.exceptions.ObjectNotFoundException;
 
 /**
@@ -67,7 +67,7 @@ public interface EntityManager {
      * @return List of obsrevation periods
      * @throws ObjectNotFoundException If no patient with the given ID can be found
      */
-    public List<ObservationPeriod> getObservationPeriodsOfPatient(Integer patientId) throws ObjectNotFoundException;
+    public Set<ObservationPeriod> getObservationPeriodsOfPatient(Integer patientId) throws ObjectNotFoundException;
 
     /**
      * Saves the given object
