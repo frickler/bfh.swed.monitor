@@ -17,16 +17,17 @@ public class PatientTest {
 
     @Test
     public void testCreate(){
-        MonitorPatient m = new MonitorPatient(1, "Alex Frei");
+        MonitorPatient m = new MonitorPatient(1, "Alex","Frei");
 
         assertEquals(m.getPatientId(), new Integer("1"));
-        assertEquals(m.getName(), "Alex Frei");
+        assertEquals(m.getName(), "Frei");
+        assertEquals(m.getFirstname(), "Alex");
     }
 
     @Test(expected=IllegalArgumentException.class)
     public void testIllegalCreate(){
-        MonitorPatient m = new MonitorPatient(1, null);
-
+        new MonitorPatient(1, null,null);
+        new MonitorPatient(1,"Alex","Frei");
     }
 
 }

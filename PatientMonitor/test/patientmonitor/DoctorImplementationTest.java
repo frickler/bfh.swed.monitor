@@ -66,8 +66,8 @@ public class DoctorImplementationTest {
     public void testAddPatient() throws LoginException {
         MonitorDoctor doctor = new MonitorDoctor(1,password, preName, name);
 
-        MonitorPatient p1 = new MonitorPatient(1, "Krigu");
-        MonitorPatient p2 = new MonitorPatient(2, "C-Web");
+        MonitorPatient p1 = new MonitorPatient(1, "Krigu","Feuz");
+        MonitorPatient p2 = new MonitorPatient(2, "Timo","Hildebrand");
 
         Assert.assertNotNull(doctor.getAssignedPatients());
         Assert.assertTrue(doctor.getAssignedPatients().isEmpty());
@@ -85,8 +85,8 @@ public class DoctorImplementationTest {
     public void testAddSamePatientTwice() throws LoginException {
         MonitorDoctor doctor = new MonitorDoctor(1,password, preName, name);
 
-        MonitorPatient p1 = new MonitorPatient(1, "Krigu");
-        MonitorPatient p2 = new MonitorPatient(2, "C-Web");
+        MonitorPatient p1 = new MonitorPatient(1, "Blaise","Nkufo");
+        MonitorPatient p2 = new MonitorPatient(2, "Christof","Blocher");
 
         Assert.assertNotNull(doctor.getAssignedPatients());
         Assert.assertTrue(doctor.getAssignedPatients().isEmpty());

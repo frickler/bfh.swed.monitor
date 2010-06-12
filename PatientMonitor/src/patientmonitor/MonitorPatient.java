@@ -13,6 +13,7 @@ import patientmonitor.definition.Patient;
 public class MonitorPatient implements Patient {
 
     private String name;
+    private String firstname;
     private Integer patientId;
 
     public String getName() {
@@ -27,12 +28,21 @@ public class MonitorPatient implements Patient {
         this.name = name;
     }
 
-    public MonitorPatient(Integer patientId,String name) {
-        if (name == null || patientId == null){
+    public String getFirstname() {
+        return this.firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public MonitorPatient(Integer patientId,String firstname,String name) {
+        if (name == null || patientId == null || firstname == null){
             throw new IllegalArgumentException();
         }
 
         this.name = name;
+        this.firstname = firstname;
         this.patientId = patientId;
     }
 

@@ -82,7 +82,7 @@ public class FakeEntityManagerTest {
      */
     @Test
     public void testCreatePatient() {
-        Patient patient = this.manager.createPatient("Maulwurf","Hans");
+        Patient patient = this.manager.createPatient("Oliver","Biberstein");
         assertNotNull(patient);
     }
 

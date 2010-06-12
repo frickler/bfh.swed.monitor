@@ -11,6 +11,6 @@ package patientmonitor.definition;
  */
 public interface Patient {
 
-    
+    public Integer getPatientId();
 
 }

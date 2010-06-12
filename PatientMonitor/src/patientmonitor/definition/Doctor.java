@@ -28,5 +28,6 @@ public interface Doctor {
      * @param patient Patient
      */
     public void addPatient(Patient patient);
+    public Integer getDoctorId();
 
 }

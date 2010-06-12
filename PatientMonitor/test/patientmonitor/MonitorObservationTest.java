@@ -19,12 +19,12 @@ public class MonitorObservationTest {
     @Test
     public void testCreate(){
         MonitorDoctor d = new MonitorDoctor(1,"pwd", "prename", "name");
-        MonitorPatient p = new MonitorPatient(1, "Schiwago");
+        MonitorPatient p = new MonitorPatient(1, "Mäthu","Schiwago");
         MeasureDevice m = new MeasureDevice(1);
 
         //Date d = new Date();
         
-        MonitorObservationPeriod o = new MonitorObservationPeriod(d, m, p, null, null, Integer.MIN_VALUE)
+        //MonitorObservationPeriod o = new MonitorObservationPeriod(d, m, p, null, null, Integer.MIN_VALUE)
     }
 
 }

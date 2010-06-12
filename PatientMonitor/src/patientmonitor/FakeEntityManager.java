@@ -38,19 +38,33 @@ public class FakeEntityManager implements EntityManager{
            this.doctors.add(doc);
         }
 
+        this.patients = new HashSet<Patient>();
+        for (int i=1; i<30;i++) {
+           Patient p = new MonitorPatient(i,"Hans","Maulwurf" + i);
+           this.patients.add(p);
+        }
+
     }
 
     public Doctor getDoctor(Integer doctorId) throws ObjectNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (Doctor doctor : this.doctors) {
+            if (doctor.getDoctorId().equals(doctorId))
+                return doctor;
+        }
+        throw new ObjectNotFoundException("Doctor with id not found: " + doctorId);
     }
 
     public Patient getPatient(Integer patientId) throws ObjectNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (Patient patient : this.patients) {
+            if (patient.getPatientId().equals(patientId))
+                return patient;
+        }
+        throw new ObjectNotFoundException("Patient with id not found: " + patientId);
     }
 
     public Device getDevice(Integer deviceId) throws ObjectNotFoundException{
         for (Device device : this.devices) {
-            if (device.getDeviceId() == deviceId)
+            if (device.getDeviceId().equals(deviceId))
                 return device;
         }
         throw new ObjectNotFoundException("Device with id not found: " + deviceId);
