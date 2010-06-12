@@ -29,8 +29,8 @@ public class MonitorDoctor implements patientmonitor.definition.Doctor{
      * @return
      */
     public Set<Patient> getAssignedPatients() {
-        return assignedPatients;
-        
+        //return (HashSet) assignedPatients.clone();
+        return ((Set) ((HashSet) assignedPatients).clone());
     }
 
     public Boolean comparePassword(String password) throws LoginException {

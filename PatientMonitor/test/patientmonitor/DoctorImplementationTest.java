@@ -81,5 +81,22 @@ public class DoctorImplementationTest {
         Assert.assertTrue(doctor.getAssignedPatients().contains(p2));
     }
 
+    @Test
+    public void testAddSamePatientTwice() throws LoginException {
+        MonitorDoctor doctor = new MonitorDoctor(1,password, preName, name);
+
+        MonitorPatient p1 = new MonitorPatient(1, "Krigu");
+        MonitorPatient p2 = new MonitorPatient(2, "C-Web");
+
+        Assert.assertNotNull(doctor.getAssignedPatients());
+        Assert.assertTrue(doctor.getAssignedPatients().isEmpty());
+
+        doctor.addPatient(p1);
+        doctor.addPatient(p1);
+
+        Assert.assertEquals(doctor.getAssignedPatients().size(), 1);
+    }
+
+
 
 }
