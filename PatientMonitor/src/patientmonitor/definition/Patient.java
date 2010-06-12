@@ -11,4 +11,6 @@ package patientmonitor.definition;
  */
 public interface Patient {
 
+    
+
 }
