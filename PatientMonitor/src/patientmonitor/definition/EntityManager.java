@@ -40,7 +40,7 @@ public interface EntityManager {
      * @return the patient
      * @throws ObjectNotFoundException If no patient exists with the given deviceId
      */
-    public Device getDevice(Integer deviceId);
+    public Device getDevice(Integer deviceId) throws ObjectNotFoundException;
 
     /**
      * Creates a new patient
@@ -54,10 +54,10 @@ public interface EntityManager {
      * Get a observation period object by his ID or throws an ObjectNotFoundException
      * if the observation period is not found
      * @param observationPeriodId The Id of the doctor
-     * @return the patient
+     * @return the observation period
      * @throws ObjectNotFoundException If no  exists with the given observationPeriodId
      */
-    public Integer getObservationPeriod(Integer observationPeriodId) throws ObjectNotFoundException;
+    public ObservationPeriod getObservationPeriod(Integer observationPeriodId) throws ObjectNotFoundException;
 
 
     /**

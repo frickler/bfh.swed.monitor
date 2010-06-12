@@ -46,7 +46,7 @@ public class DoctorImplementationTest {
         Assert.assertNotNull(d);
 
         Assert.assertEquals(d.getName(), this.name);
-        Assert.assertEquals(d.getPreName(), this.preName);
+        Assert.assertEquals(d.getFirstName(), this.preName);
         Assert.assertEquals(d.getPassword(), this.password);
         Assert.assertEquals(d.getDoctorId(), this.id);
     }

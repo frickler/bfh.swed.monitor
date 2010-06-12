@@ -18,16 +18,15 @@ public interface Device {
 
     /**
      * Initialize the device
-     * @param begin Startdate
-     * @param end Enddate
-     * @param frequency Frequency
+     * @param period ObservationPeriod
      */
-    public void initialize(Date begin, Date end, Integer frequency) throws InvalidDateRangeException;
+    public void initialize(ObservationPeriod period) throws NullPointerException;
 
     /**
      * Assigns a patient to this device
      * @param patient Patient, which will be assigned
      */
+    @Deprecated
     public void setPatient(Patient patient);
 
     /**
@@ -36,6 +35,13 @@ public interface Device {
      * 
      * @return Returns the temperature
      */
-    public float performMeasure() throws NoPatientAssignedException;
+    public Float performMeasure() throws NoPatientAssignedException;
+
+    /**
+     *
+     * Returns the id from the device
+     *
+     */
+    public Integer getDeviceId();
 
 }

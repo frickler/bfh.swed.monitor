@@ -21,7 +21,7 @@ public class MonitorDoctor implements patientmonitor.definition.Doctor{
 
     private Integer doctorId;
     private String password;
-    private String preName;
+    private String firstName;
     private String name;
 
     /**
@@ -64,25 +64,25 @@ public class MonitorDoctor implements patientmonitor.definition.Doctor{
         this.password = password;
     }
 
-    public String getPreName() {
-        return preName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setPreName(String preName) {
-        this.preName = preName;
+    public void setPreName(String firstName) {
+        this.firstName = firstName;
     }
 
     public Integer getDoctorId() {
         return doctorId;
     }
 
-    public MonitorDoctor(Integer doctorId, String password, String preName, String name) {
-        if (password == null || preName == null || name == null || doctorId == null){
+    public MonitorDoctor(Integer doctorId, String password, String firstName, String name) {
+        if (password == null || firstName == null || name == null || doctorId == null){
             throw new IllegalArgumentException();
         }
 
         this.password = password;
-        this.preName = preName;
+        this.firstName = firstName;
         this.name = name;
         this.doctorId = doctorId;
 

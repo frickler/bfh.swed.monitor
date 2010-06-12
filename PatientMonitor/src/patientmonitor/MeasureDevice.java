@@ -9,6 +9,7 @@ import java.util.Date;
 import patient.exceptions.InvalidDateRangeException;
 import patient.exceptions.NoPatientAssignedException;
 import patientmonitor.definition.Device;
+import patientmonitor.definition.ObservationPeriod;
 import patientmonitor.definition.Patient;
 
 /**
@@ -16,20 +17,30 @@ import patientmonitor.definition.Patient;
  * @author seed
  */
 public class MeasureDevice implements Device{
+    private Integer deviceId;
+    private Patient patient;
+    private ObservationPeriod period;
 
-    public MeasureDevice() {
+    public MeasureDevice(Integer deviceId) throws IllegalArgumentException {
+        if (deviceId == null)throw new IllegalArgumentException();
+        this.deviceId = deviceId;
     }
 
-    public void initialize(Date begin, Date end, Integer frequency) throws InvalidDateRangeException {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void initialize(ObservationPeriod period) throws IllegalArgumentException {
+        if (period == null)throw new IllegalArgumentException();
+        this.period = period;
     }
 
     public void setPatient(Patient patient) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public float performMeasure() throws NoPatientAssignedException {
+    public Float performMeasure() throws NoPatientAssignedException {
         return 37.3f;
+    }
+
+    public Integer getDeviceId() {
+        return this.deviceId;
     }
 
 }

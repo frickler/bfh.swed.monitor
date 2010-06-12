@@ -5,15 +5,12 @@
 
 package patientmonitor;
 
-import java.util.Date;
-import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import patientmonitor.definition.Patient;
 
 /**
  *
@@ -21,23 +18,25 @@ import patientmonitor.definition.Patient;
  */
 public class MeasureDeviceTest {
 
-    public MeasureDeviceTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
+    MeasureDevice device;
 
     @Before
     public void setUp() {
+        this.device = new MeasureDevice(3);
     }
 
     @After
     public void tearDown() {
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testInvalidConstruction() throws Exception {
+        MeasureDevice d = new MeasureDevice(null);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testInvalidInitialization() throws Exception {
+        this.device.initialize(null);
     }
 
     /**
@@ -45,10 +44,16 @@ public class MeasureDeviceTest {
      */
     @Test
     public void testPerformMeasure() throws Exception {
-        MeasureDevice instance = new MeasureDevice();
-        float result = instance.performMeasure();
-        Assert.assertTrue(result > 0.0);
+        float result = this.device.performMeasure();
+        assertTrue(result > 0.0);
         
+    }
+
+    @Test
+    public void testGetDeviceId() throws Exception {
+        int expected = 3;
+        int result = this.device.getDeviceId();
+        assertTrue(result == expected);
     }
 
 }
