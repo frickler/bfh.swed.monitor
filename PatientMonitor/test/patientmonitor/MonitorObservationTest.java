@@ -5,10 +5,9 @@
 
 package patientmonitor;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -22,9 +21,21 @@ public class MonitorObservationTest {
         MonitorPatient p = new MonitorPatient(1, "Mäthu","Schiwago");
         MeasureDevice m = new MeasureDevice(1);
 
-        //Date d = new Date();
+        Date now = new Date();
         
-        //MonitorObservationPeriod o = new MonitorObservationPeriod(d, m, p, null, null, Integer.MIN_VALUE)
+        MonitorObservationPeriod op = new MonitorObservationPeriod(d, m, p, now, now, 5);
+
+
+        assertEquals(m,op.getDevice());
+        assertEquals(p,op.getPatient());
+        assertEquals(d,op.getDoctor());
+        assertEquals(now,op.getFrom());
+        assertEquals(now,op.getTo());
+        assertEquals(new Integer(5),op.getFrequency());
+
+        assertNotNull("Measures should not be null",op.getMeasures());
+        assertTrue(op.getMeasures().isEmpty());
+
     }
 
 }

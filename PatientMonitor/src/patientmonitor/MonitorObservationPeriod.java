@@ -6,6 +6,7 @@
 package patientmonitor;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import patient.exceptions.InvalidDateRangeException;
@@ -28,32 +29,32 @@ public class MonitorObservationPeriod implements ObservationPeriod{
     private Date to;
     private Integer frequency;
 
-    public void setDevice(Device device) {
-        this.device = device;
+    public Device getDevice() {
+        return device;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setFrequency(Integer frequency) {
-        this.frequency = frequency;
+    public Integer getFrequency() {
+        return frequency;
     }
 
-    public void setFrom(Date from) {
-        this.from = from;
+    public Date getFrom() {
+        return from;
     }
 
-    public void setMeasures(Set<Measure> measures) {
-        this.measures = measures;
+    public Set<Measure> getMeasures() {
+        return measures;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setTo(Date to) {
-        this.to = to;
+    public Date getTo() {
+        return to;
     }
 
     public List getMeasures(Date from, Date to) throws InvalidDateRangeException {
@@ -71,6 +72,10 @@ public class MonitorObservationPeriod implements ObservationPeriod{
         this.from = from;
         this.to = to;
         this.frequency = frequency;
+
+        this.measures = new HashSet<Measure>();
+
+        this.device.initialize(this);
         
     }    
 
