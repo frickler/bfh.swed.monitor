@@ -29,11 +29,17 @@ public class MeasureDeviceTest {
     public void tearDown() {
     }
 
+    /**
+     * This test tries to create an instance but gives a null parameter
+     */
     @Test(expected=IllegalArgumentException.class)
     public void testInvalidConstruction() throws Exception {
         MeasureDevice d = new MeasureDevice(null);
     }
 
+    /**
+     * This of initialzie with a null parameter
+     */
     @Test(expected=IllegalArgumentException.class)
     public void testInvalidInitialization() throws Exception {
         this.device.initialize(null);
@@ -45,15 +51,17 @@ public class MeasureDeviceTest {
     @Test
     public void testPerformMeasure() throws Exception {
         float result = this.device.performMeasure();
+
         assertTrue(result > 0.0);
         
     }
 
+    /**
+     * Test of getDeviceId
+     */
     @Test
     public void testGetDeviceId() throws Exception {
-        int expected = 3;
-        int result = this.device.getDeviceId();
-        assertTrue(result == expected);
+        assertEquals(new Integer(3),this.device.getDeviceId());
     }
 
 }

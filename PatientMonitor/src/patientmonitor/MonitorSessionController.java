@@ -18,14 +18,31 @@ import patientmonitor.definition.SessionController;
 public class MonitorSessionController implements SessionController{
 
 
+    /**
+     * Empty method (would destroy the SessionController)
+     */
     public void logout() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
 
+    /**
+     *
+     * @param patientId
+     * @param patientName
+     * @param patientPrename
+     */
     public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    /**
+     *
+     * @param patientId
+     * @param doctorId
+     * @param begin
+     * @param end
+     * @param frequency
+     */
     public void defineObservationPeriod(Integer patientId, Integer doctorId, Date begin, Date end, Integer frequency) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

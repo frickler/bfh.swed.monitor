@@ -5,8 +5,6 @@
 
 package patientmonitor.definition;
 
-import java.util.Date;
-import patient.exceptions.InvalidDateRangeException;
 import patient.exceptions.NoPatientAssignedException;
 
 /**
@@ -21,13 +19,6 @@ public interface Device {
      * @param period ObservationPeriod
      */
     public void initialize(ObservationPeriod period) throws NullPointerException;
-
-    /**
-     * Assigns a patient to this device
-     * @param patient Patient, which will be assigned
-     */
-    @Deprecated
-    public void setPatient(Patient patient);
 
     /**
      * 

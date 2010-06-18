@@ -6,7 +6,7 @@
 package patientmonitor.definition;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 import patient.exceptions.InvalidDateRangeException;
 
 /**
@@ -19,9 +19,9 @@ public interface ObservationPeriod {
      * Returns a list of all measures within the given Period
      * @param from Startdate
      * @param to Enddate
-     * @return List of measures
+     * @return Set of measures
      * @throws InvalidDateRangeException if the from > to or one of them is null
      */
-    public List getMeasures(Date from, Date to) throws InvalidDateRangeException;
+    public Set getMeasures(Date from, Date to) throws InvalidDateRangeException;
 
 }
