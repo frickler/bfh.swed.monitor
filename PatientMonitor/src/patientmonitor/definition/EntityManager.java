@@ -15,7 +15,7 @@ import patient.exceptions.ObjectNotFoundException;
  */
 public interface EntityManager {
 
-    /**
+    /**password
      * Get a doctor object by his ID or throws an ObjectNotFoundException
      * if the doctor is not found
      * @param doctorId The Id of the doctor

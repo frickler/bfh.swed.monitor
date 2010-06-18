@@ -26,7 +26,7 @@ public class MonitorLoginController implements LoginController{
         try {
             Doctor d = em.getDoctor(doctorId);
             if (d.comparePassword(password)){
-                return new MonitorSessionController();
+                return new MonitorSessionController(d);
             }
             return null;
         } catch (ObjectNotFoundException ex) {

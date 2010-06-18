@@ -8,7 +8,10 @@ package patientmonitor;
 import java.util.Date;
 import patient.exceptions.DeviceNotAssignedException;
 import patient.exceptions.ObjectNotFoundException;
+import patientmonitor.definition.Doctor;
+import patientmonitor.definition.EntityManager;
 import patientmonitor.definition.ObservationPeriod;
+import patientmonitor.definition.Patient;
 import patientmonitor.definition.SessionController;
 
 /**
@@ -17,6 +20,16 @@ import patientmonitor.definition.SessionController;
  */
 public class MonitorSessionController implements SessionController{
 
+    private EntityManager em;
+    private Doctor d;
+
+    public MonitorSessionController(Doctor d) {
+        if (d == null){
+            throw new IllegalArgumentException("Doctor can't be null");
+        }
+        this.em = new FakeEntityManager();
+        this.d = d;
+    }
 
     /**
      * Empty method (would destroy the SessionController)
@@ -32,7 +45,16 @@ public class MonitorSessionController implements SessionController{
      * @param patientPrename
      */
     public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename) {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        Patient p = null;
+        try {
+            p = em.getPatient(patientId);
+        } catch (ObjectNotFoundException ex) {
+            // No patient found -> create new
+            p = em.createPatient(patientName, patientPrename);
+            d.addPatient(p);
+        }
+
     }
 
     /**

@@ -91,7 +91,7 @@ public class FakeEntityManager implements EntityManager{
     }
 
     public Patient createPatient(String patientName, String patientPrename) {
-        Patient p = new MonitorPatient(this.patients.size()+1,"Barak","Obama");
+        Patient p = new MonitorPatient(this.patients.size()+1,patientPrename,patientName);
         this.patients.add(p);
         return p;
         

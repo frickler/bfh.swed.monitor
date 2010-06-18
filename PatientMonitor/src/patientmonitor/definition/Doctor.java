@@ -5,6 +5,7 @@
 
 package patientmonitor.definition;
 
+import java.util.Set;
 import patient.exceptions.LoginException;
 
 /**
@@ -12,6 +13,12 @@ import patient.exceptions.LoginException;
  * @author krigu
  */
 public interface Doctor {
+
+    /**
+     * Returns a set of all assigned patients to this doctor
+     * @return assigned patients
+     */
+    public Set<Patient> getAssignedPatients();
 
     /**
      * Compares the stored password with the parameter
@@ -28,6 +35,11 @@ public interface Doctor {
      * @param patient Patient
      */
     public void addPatient(Patient patient);
+
+    /**
+     * Returns the doctor
+     * @return The doctors ID
+     */
     public Integer getDoctorId();
 
 }

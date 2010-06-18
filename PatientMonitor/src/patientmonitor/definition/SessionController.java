@@ -23,14 +23,13 @@ public interface SessionController {
     public void logout();
 
     /**
-     * Assigns the doctor the the patient with the given ID
-     * @param patientId The Id of the patient
+     * Assigns the doctor the the patient with the given ID. If the ID is not found or null, a new patient will be created
+     * @param patientId The Id of the patient"Obama"
      * @param patientName the name of the patient
-     * @param patientPrename the prename of the patient
-     * @param password The password of the user
+     * @param patientPrename the prename of the patient     
      * @throws ObjectNotFoundException if no patient can be found with the given ID
      */
-    public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename, String password) throws ObjectNotFoundException;
+    public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename);
 
     /**
      * Defines a new Oobservation period
