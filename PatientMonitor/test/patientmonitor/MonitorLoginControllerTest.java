@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  *
  * @author krigu
  */
-public class LoginTest {
+public class MonitorLoginControllerTest {
 
     /**
      * Tests the Login Usecase (happy path)      

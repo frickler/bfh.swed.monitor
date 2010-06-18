@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  *
  * @author krigu
  */
-public class PatientTest {
+public class MonitorPatientTest {
 
     @Test
     public void testCreate(){

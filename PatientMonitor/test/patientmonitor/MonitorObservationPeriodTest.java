@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  *
  * @author krigu
  */
-public class MonitorObservationTest {
+public class MonitorObservationPeriodTest {
 
     /**
      * Test the constructor and the correct assignment of the fields
