@@ -5,8 +5,10 @@
 
 package patientmonitor;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import patient.exceptions.ObjectNotFoundException;
 import patientmonitor.definition.Device;
@@ -49,7 +51,15 @@ public class FakeEntityManager implements EntityManager{
         for (int i=1; i<=30;i++) {
            //MonitorObservationPeriod op = new MonitorObservationPeriod(i,this.getDoctor(i),this.getDevice(i),this.getPatient(i),);
            //ööööööööhmmmm irgendwie datum erstelle!
-
+            GregorianCalendar date = new GregorianCalendar(2010, Calendar.JUNE, (int)((Math.random() * 29)+1));
+            Date from = date.getTime();
+            date = new GregorianCalendar(2010,Calendar.JULY,(int)((Math.random() * 29)+1));
+            Date to = date.getTime();
+            try {
+                this.observations.add(new MonitorObservationPeriod(i,this.getDoctor(5),this.getDevice(5),this.getPatient(5), from, to,i));
+            } catch (Exception e) {
+                
+            }
            //this.patients.add(op);
         }
         
@@ -88,11 +98,20 @@ public class FakeEntityManager implements EntityManager{
     }
 
     public ObservationPeriod getObservationPeriod(Integer observationPeriodId) throws ObjectNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for (ObservationPeriod period : this.observations) {
+            if (period.getPeriodId().equals(observationPeriodId))
+                return period;
+        }
+        throw new ObjectNotFoundException("Observation period with id not found: " + observationPeriodId);
     }
 
     public Set<ObservationPeriod> getObservationPeriodsOfPatient(Integer patientId) throws ObjectNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet.");
+        Set<ObservationPeriod> s = new HashSet<ObservationPeriod>();
+        for (ObservationPeriod op : this.observations) {
+            if (((MonitorObservationPeriod)op).getPatient().getPatientId().equals(patientId))
+                s.add(op);
+        }
+        return s;
     }
 
     public void save(Object o) {

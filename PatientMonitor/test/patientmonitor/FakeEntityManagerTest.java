@@ -97,6 +97,7 @@ public class FakeEntityManagerTest {
     public void testGetObservationPeriod() throws Exception {
         ObservationPeriod period = this.manager.getObservationPeriod(3);
         assertNotNull(period);
+        assertEquals(period.getPeriodId(), new Integer(3));
         
     }
 
@@ -105,15 +106,12 @@ public class FakeEntityManagerTest {
      */
     @Test
     public void testGetObservationPeriodsOfPatient() throws Exception {
-        Set<ObservationPeriod> periods = this.manager.getObservationPeriodsOfPatient(3);
-    }
+        Set<ObservationPeriod> periods = this.manager.getObservationPeriodsOfPatient(5);
+        assertNotNull(periods);
+        assertEquals(30,periods.size());
 
-    /**
-     * Test of save method, of class FakeEntityManager.
-     */
-    @Test
-    public void testSave() {
-
+        periods = this.manager.getObservationPeriodsOfPatient(3);
+        assertEquals(0, periods.size());
     }
 
 }

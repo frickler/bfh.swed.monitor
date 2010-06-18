@@ -24,4 +24,6 @@ public interface ObservationPeriod {
      */
     public Set getMeasures(Date from, Date to) throws InvalidDateRangeException;
 
+    public Integer getPeriodId();
+
 }
