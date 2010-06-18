@@ -4,11 +4,11 @@
  */
 package patientmonitor;
 
-import junit.framework.Assert;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import patient.exceptions.LoginException;
+
+import static org.junit.Assert.*;
 
 /**
  *
@@ -23,12 +23,8 @@ public class DoctorImplementationTest {
     private Integer id = 1;
 
     @Before
-    public void setUp() {
-        d = new MonitorDoctor(1,password, preName, name);
-    }
-
-    @After
-    public void tearDown() {
+    public void setUp(){
+        d = new MonitorDoctor(id, password, preName, name);
     }
 
     @Test(expected=IllegalArgumentException.class)
@@ -43,22 +39,22 @@ public class DoctorImplementationTest {
     @Test
     public void testCreateDoctor() {
 
-        Assert.assertNotNull(d);
+        assertNotNull(d);
 
-        Assert.assertEquals(d.getName(), this.name);
-        Assert.assertEquals(d.getFirstName(), this.preName);
-        Assert.assertEquals(d.getPassword(), this.password);
-        Assert.assertEquals(d.getDoctorId(), this.id);
+        assertEquals(d.getName(), this.name);
+        assertEquals(d.getFirstName(), this.preName);
+        assertEquals(d.getPassword(), this.password);
+        assertEquals(d.getDoctorId(), this.id);
     }
 
     @Test
     public void testCorrectPassword() throws LoginException {
-        Assert.assertTrue(d.comparePassword(password));
+        assertTrue(d.comparePassword(password));
     }
 
     @Test(expected = LoginException.class)
     public void testIncorrectPassword() throws LoginException {
-        Assert.assertTrue(d.comparePassword("dummy"));
+        assertTrue(d.comparePassword("dummy"));
     }
 
 
@@ -69,16 +65,16 @@ public class DoctorImplementationTest {
         MonitorPatient p1 = new MonitorPatient(1, "Krigu","Feuz");
         MonitorPatient p2 = new MonitorPatient(2, "Timo","Hildebrand");
 
-        Assert.assertNotNull(doctor.getAssignedPatients());
-        Assert.assertTrue(doctor.getAssignedPatients().isEmpty());
+        assertNotNull(doctor.getAssignedPatients());
+        assertTrue(doctor.getAssignedPatients().isEmpty());
 
         doctor.addPatient(p1);
         doctor.addPatient(p2);
 
-        Assert.assertEquals(doctor.getAssignedPatients().size(),2);
+        assertEquals(doctor.getAssignedPatients().size(),2);
 
-        Assert.assertTrue(doctor.getAssignedPatients().contains(p1));
-        Assert.assertTrue(doctor.getAssignedPatients().contains(p2));
+        assertTrue(doctor.getAssignedPatients().contains(p1));
+        assertTrue(doctor.getAssignedPatients().contains(p2));
     }
 
     @Test
@@ -88,13 +84,13 @@ public class DoctorImplementationTest {
         MonitorPatient p1 = new MonitorPatient(1, "Blaise","Nkufo");
         MonitorPatient p2 = new MonitorPatient(2, "Christof","Blocher");
 
-        Assert.assertNotNull(doctor.getAssignedPatients());
-        Assert.assertTrue(doctor.getAssignedPatients().isEmpty());
+        assertNotNull(doctor.getAssignedPatients());
+        assertTrue(doctor.getAssignedPatients().isEmpty());
 
         doctor.addPatient(p1);
         doctor.addPatient(p1);
 
-        Assert.assertEquals(doctor.getAssignedPatients().size(), 1);
+        assertEquals(doctor.getAssignedPatients().size(), 1);
     }
 
 

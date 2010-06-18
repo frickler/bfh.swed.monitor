@@ -58,7 +58,6 @@ public class MonitorSessionControllerTest {
         Boolean found = Boolean.FALSE;
         for (Patient p : d.getAssignedPatients()) {
             MonitorPatient mp = (MonitorPatient) p;
-            System.out.println(mp.getName());
             if (mp.getName().equals(name) && mp.getFirstname().equals(firstname)) {
                 found = Boolean.TRUE;
             }
@@ -87,7 +86,6 @@ public class MonitorSessionControllerTest {
 
         for (Patient p : d.getAssignedPatients()) {
             MonitorPatient mp = (MonitorPatient) p;
-            System.out.println("Name: " + mp.getName() + " Vorname: " + mp.getFirstname());
             if (mp.getName().equals("Maulwurf1") && mp.getFirstname().equals("Hans") && mp.getPatientId().equals(new Integer(1))) {
                 found = Boolean.TRUE;
             }
@@ -129,19 +127,21 @@ public class MonitorSessionControllerTest {
      * Test of consultObservationPeriod method, of class MonitorSessionController.
      */
     @Test
-    public void testConsultObservationPeriod() throws ObjectNotFoundException {
+    public void testConsultObservationPeriod() throws ObjectNotFoundException, InvalidDateRangeException {
 
-        Doctor d = new MonitorDoctor(1, "test", "test", "test");
+
         EntityManager em = new FakeEntityManager();
-        SessionController s = new MonitorSessionController(d, em);
+        SessionController s = new MonitorSessionController(em.getDoctor(1), em);
 
         Set<ObservationPeriod> o = s.consultObservationPeriod(3);
 
-        assertNotNull(o);
-        // The 30 comes from the FakeEntityManager
-                // Open defineObservation period
-        
-        throw new ObjectNotFoundException();
+        s.defineObservationPeriod(2, 5, new Date(), new Date(), 10);
+
+
+        Set<ObservationPeriod> l = s.consultObservationPeriod(2);
+
+        assertNotNull(l);
+        assertEquals(1, l.size());
 
     }
 
@@ -161,7 +161,7 @@ public class MonitorSessionControllerTest {
         GregorianCalendar calTo = new GregorianCalendar(2010, Calendar.JUNE, 10);
         Date to = calTo.getTime();
 
-        Set<Measure> ml = s.consultMeasure(1, from, to);
+        Set<Measure> ml = s.consultMeasure(5, from, to);
 
         Set<Measure> result = new HashSet<Measure>();
         for (Measure measure : ml) {

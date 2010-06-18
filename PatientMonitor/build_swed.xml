@@ -63,6 +63,7 @@
 
   <target name="run-tests" depends="compile" description="Runs all the tests">
     <junit printsummary="yes" showoutput="true">
+      <formatter type="plain" usefile="false"/>
       <classpath refid="run.class.path" />
       <batchtest fork="yes" todir="${reports.tests}">
         <fileset dir="${build.dir}">
