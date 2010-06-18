@@ -37,4 +37,13 @@ public class MeasureDevice implements Device{
         return this.deviceId;
     }
 
+    public void setPatient(Patient p) {
+        this.patient = p;
+    }
+
+    public Patient getPatient() {
+        return this.patient;
+    }
+    
+
 }

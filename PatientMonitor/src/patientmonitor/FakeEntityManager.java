@@ -112,4 +112,18 @@ public class FakeEntityManager implements EntityManager{
         return s;
     }
 
+    public Set<Doctor> getDoctors()
+    {
+        return this.doctors;
+    }
+
+    public Set<Patient> getPatient()
+    {
+        return this.patients;
+    }
+
+    public Set<ObservationPeriod> getObservationPeriods()
+    {
+        return this.observations;
+    }
 }

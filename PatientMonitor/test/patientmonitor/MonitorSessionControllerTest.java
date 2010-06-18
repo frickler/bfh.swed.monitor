@@ -99,23 +99,28 @@ public class MonitorSessionControllerTest {
      */
     @Test
     public void testDefineObservationPeriod() {
-        EntityManager em = new FakeEntityManager();
+        FakeEntityManager em = new FakeEntityManager();
+        Integer expected = (em.getObservationPeriods().size() + 1);
         MonitorSessionController c = new MonitorSessionController(new MonitorDoctor(1, "password", "Hans", "Maulwurf"), em);
         c.defineObservationPeriod(3, 3, new GregorianCalendar(2010, 6, 3).getTime(), new GregorianCalendar(2010, 7, 3).getTime(), 60);
-
+        assertEquals(expected, (Integer) em.getObservationPeriods().size());
     }
 
     /**
      * Test of deviceReturn method, of class MonitorSessionController.
      */
     @Test
-    public void testDeviceReturn() {
-        System.out.println("deviceReturn");
-        Integer deviceId = null;
-        MonitorSessionController instance = null;
-        instance.deviceReturn(deviceId);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testDeviceReturn() throws Exception{
+        FakeEntityManager em = new FakeEntityManager();
+        Doctor d = em.getDoctor(3);
+        Patient p = em.getPatient(3);
+        Device de = em.getDevice(3);
+        de.setPatient(p);
+
+        MonitorSessionController c = new MonitorSessionController(d, em);
+        c.deviceReturn(3);
+        assertNull(de.getPatient());
+        
     }
 
     /**

@@ -35,4 +35,8 @@ public interface Device {
      */
     public Integer getDeviceId();
 
+    public void setPatient(Patient p);
+
+    public Patient getPatient();
+
 }
