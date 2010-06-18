@@ -52,11 +52,13 @@ public interface SessionController {
     public void deviceReturn(Integer deviceId) throws ObjectNotFoundException;
 
     /**
-     * Returns the obser
+     * Returns all ObservationPeriods assigned to the patient with the given Id
+     * 
      * @param patientId The ID of the patient
-     * @return
+     * @return All observationPeriods assigned to the patient with the given Id
+     * @throws  If no patient is assigned to the given patientId
      */
-    public ObservationPeriod consultObservationPeriod(Integer patientId) throws ObjectNotFoundException;
+    public Set<ObservationPeriod> consultObservationPeriod(Integer patientId) throws ObjectNotFoundException;
 
     /**
      * Performs a measure and returns the temperature

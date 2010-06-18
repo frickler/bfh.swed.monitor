@@ -5,8 +5,6 @@
 
 package patientmonitor;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import patient.exceptions.LoginException;
 import patient.exceptions.ObjectNotFoundException;
 import patientmonitor.definition.Doctor;
@@ -26,7 +24,7 @@ public class MonitorLoginController implements LoginController{
         try {
             Doctor d = em.getDoctor(doctorId);
             if (d.comparePassword(password)){
-                return new MonitorSessionController(d);
+                return new MonitorSessionController(d,em);
             }
             return null;
         } catch (ObjectNotFoundException ex) {

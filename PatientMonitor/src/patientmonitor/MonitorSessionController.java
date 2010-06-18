@@ -75,17 +75,13 @@ public class MonitorSessionController implements SessionController{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public ObservationPeriod consultObservationPeriod(Integer patientId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Set<ObservationPeriod> consultObservationPeriod(Integer patientId) throws ObjectNotFoundException {
+        return em.getObservationPeriodsOfPatient(patientId);
     }
 
     public Set<Measure> consultMeasure(Integer observatoinId, Date from, Date to) throws ObjectNotFoundException, InvalidDateRangeException {
         ObservationPeriod op = em.getObservationPeriod(observatoinId);
         return op.getMeasures(from, to);
-    }
-
-    public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename, String password) throws ObjectNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public Integer testMeasure() throws DeviceNotAssignedException {
