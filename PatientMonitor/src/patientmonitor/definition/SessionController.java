@@ -7,8 +7,10 @@ package patientmonitor.definition;
 
 import patient.exceptions.DeviceNotAssignedException;
 import java.util.Date;
+import java.util.Set;
 import patient.exceptions.InvalidDateRangeException;
 import patient.exceptions.ObjectNotFoundException;
+import patientmonitor.Measure;
 
 /**
  * 
@@ -65,14 +67,16 @@ public interface SessionController {
     public Integer testMeasure() throws DeviceNotAssignedException;
 
    /**
-    * 
-    * @param patientId
-    * @param observatoinId
-    * @param from
-    * @param to
-    * @return
+    * Get all measures from the observation with the given Id
+    *
+    * @param observatoinId The ID of the observation period
+    * @param from From-Date
+    * @param to To-Date
+    * @return All measures in the given time period
+    * @throws ObjectNotFoundException if no patient with the given patientId or no observation period can be found with the given observationId
+    * @throws InvalidDateRangeException if the given date range is not valid
     */
-    public ObservationPeriod consultMeasure(Integer patientId, Integer observatoinId, Date from, Date to);
+    public Set<Measure> consultMeasure(Integer observatoinId, Date from, Date to) throws ObjectNotFoundException, InvalidDateRangeException;
 
 
 }

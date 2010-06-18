@@ -6,7 +6,9 @@
 package patientmonitor;
 
 import java.util.Date;
+import java.util.Set;
 import patient.exceptions.DeviceNotAssignedException;
+import patient.exceptions.InvalidDateRangeException;
 import patient.exceptions.ObjectNotFoundException;
 import patientmonitor.definition.Doctor;
 import patientmonitor.definition.EntityManager;
@@ -77,8 +79,9 @@ public class MonitorSessionController implements SessionController{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public ObservationPeriod consultMeasure(Integer patientId, Integer observatoinId, Date from, Date to) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Set<Measure> consultMeasure(Integer observatoinId, Date from, Date to) throws ObjectNotFoundException, InvalidDateRangeException {
+        ObservationPeriod op = em.getObservationPeriod(observatoinId);
+        return op.getMeasures(from, to);
     }
 
     public void assignDoctorPatient(Integer patientId, String patientName, String patientPrename, String password) throws ObjectNotFoundException {

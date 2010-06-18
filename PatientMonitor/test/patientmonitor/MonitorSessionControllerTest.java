@@ -23,25 +23,6 @@ import patientmonitor.definition.SessionController;
  */
 public class MonitorSessionControllerTest {
 
-    public MonitorSessionControllerTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
     /**
      * "Dummy placeholder" test
      */
@@ -161,17 +142,7 @@ public class MonitorSessionControllerTest {
      */
     @Test
     public void testConsultMeasure() {
-        System.out.println("consultMeasure");
-        Integer patientId = null;
-        Integer observatoinId = null;
-        Date from = null;
-        Date to = null;
-        MonitorSessionController instance = null;
-        ObservationPeriod expResult = null;
-        ObservationPeriod result = instance.consultMeasure(patientId, observatoinId, from, to);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**

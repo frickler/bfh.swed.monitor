@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package patientmonitor;
 
 import org.junit.AfterClass;
@@ -16,6 +15,11 @@ import static org.junit.Assert.*;
  */
 public class ConsultMeasureTest {
 
-  
+    /**
+     * This test should recieve a list of 
+     */
+    @Test
+    public void consultMeasureTest() {
 
+    }
 }
