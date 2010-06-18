@@ -69,10 +69,5 @@ public interface EntityManager {
      */
     public Set<ObservationPeriod> getObservationPeriodsOfPatient(Integer patientId) throws ObjectNotFoundException;
 
-    /**
-     * Saves the given object
-     * @param o
-     */
-    public void save(Object o);
 
 }

@@ -43,14 +43,12 @@ public class FakeEntityManager implements EntityManager{
 
         this.patients = new HashSet<Patient>();
         for (int i=1; i<=30;i++) {
-           Patient p = this.createPatient("Hans","Maulwurf" + i);
+           Patient p = this.createPatient("Maulwurf" + i,"Hans");
            this.patients.add(p);
         }
 
         this.observations = new HashSet<ObservationPeriod>();
-        for (int i=1; i<=30;i++) {
-           //MonitorObservationPeriod op = new MonitorObservationPeriod(i,this.getDoctor(i),this.getDevice(i),this.getPatient(i),);
-           //ööööööööhmmmm irgendwie datum erstelle!
+        for (int i=1; i<=30;i++) {           
             GregorianCalendar date = new GregorianCalendar(2010, Calendar.JUNE, (int)((Math.random() * 29)+1));
             Date from = date.getTime();
             date = new GregorianCalendar(2010,Calendar.JULY,(int)((Math.random() * 29)+1));
@@ -112,10 +110,6 @@ public class FakeEntityManager implements EntityManager{
                 s.add(op);
         }
         return s;
-    }
-
-    public void save(Object o) {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
 }

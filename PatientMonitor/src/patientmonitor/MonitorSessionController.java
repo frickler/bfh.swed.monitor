@@ -51,9 +51,9 @@ public class MonitorSessionController implements SessionController{
             p = em.getPatient(patientId);
         } catch (ObjectNotFoundException ex) {
             // No patient found -> create new
-            p = em.createPatient(patientName, patientPrename);
-            d.addPatient(p);
+            p = em.createPatient(patientName, patientPrename);            
         }
+        d.addPatient(p);
 
     }
 
