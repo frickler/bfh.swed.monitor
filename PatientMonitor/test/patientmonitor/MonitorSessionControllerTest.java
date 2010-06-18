@@ -182,12 +182,13 @@ public class MonitorSessionControllerTest {
      */
     @Test
     public void testTestMeasure() throws Exception {
-        System.out.println("testMeasure");
-        MonitorSessionController instance = null;
-        Integer expResult = null;
-        Integer result = instance.testMeasure();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        EntityManager em = new FakeEntityManager();
+        Device de = em.getDevice(3);
+        Patient p = em.getPatient(3);
+        Doctor d = em.getDoctor(3);
+        MonitorSessionController ms = new MonitorSessionController(d, em);
+        ms.defineObservationPeriod(3, 3, new GregorianCalendar(2010,6,6).getTime(), new GregorianCalendar(2010,7,6).getTime(),60);
+        assertTrue(ms.testMeasure() > 0.0f);
+        
     }
 }

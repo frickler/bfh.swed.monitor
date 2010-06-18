@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.Set;
 import patient.exceptions.DeviceNotAssignedException;
 import patient.exceptions.InvalidDateRangeException;
+import patient.exceptions.NoPatientAssignedException;
 import patient.exceptions.ObjectNotFoundException;
 import patientmonitor.definition.Device;
 import patientmonitor.definition.Doctor;
@@ -25,6 +26,7 @@ public class MonitorSessionController implements SessionController{
 
     private EntityManager em;
     private Doctor doctor;
+    private Device currentDevice;
 
     public MonitorSessionController(Doctor d,EntityManager em) {
         if (d == null){
@@ -71,6 +73,8 @@ public class MonitorSessionController implements SessionController{
     public void defineObservationPeriod(Integer patientId, Integer deviceId,Date begin, Date end, Integer frequency) throws ObjectNotFoundException {
         Patient p = this.em.getPatient(patientId);
         Device d = this.em.getDevice(deviceId);
+        this.currentDevice = d;
+        d.setPatient(p);
         this.em.createObservationPeriod(this.doctor, p, d, begin, end, frequency);
 
     }
@@ -89,8 +93,9 @@ public class MonitorSessionController implements SessionController{
         return op.getMeasures(from, to);
     }
 
-    public Integer testMeasure() throws DeviceNotAssignedException {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Float testMeasure() throws DeviceNotAssignedException,NoPatientAssignedException {
+        if (this.currentDevice == null) throw new DeviceNotAssignedException();
+        return this.currentDevice.performMeasure();
     }
 
 

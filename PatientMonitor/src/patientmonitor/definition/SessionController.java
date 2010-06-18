@@ -5,10 +5,12 @@
 
 package patientmonitor.definition;
 
+
 import patient.exceptions.DeviceNotAssignedException;
 import java.util.Date;
 import java.util.Set;
 import patient.exceptions.InvalidDateRangeException;
+import patient.exceptions.NoPatientAssignedException;
 import patient.exceptions.ObjectNotFoundException;
 import patientmonitor.Measure;
 
@@ -66,7 +68,7 @@ public interface SessionController {
      * @return the temperature from the measure
      * @throws  If no device is assigned to perform the measure with
      */
-    public Integer testMeasure() throws DeviceNotAssignedException;
+    public Float testMeasure() throws DeviceNotAssignedException,NoPatientAssignedException;
 
    /**
     * Get all measures from the observation with the given Id
