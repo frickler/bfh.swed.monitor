@@ -43,7 +43,7 @@ public interface SessionController {
      * @throws ObjectNotFoundException if no patient with the given patientId or no doctor can be found with the given doctorId
      * @throws InvalidDateRangeException if the given date range is not valid
      */
-    public void defineObservationPeriod(Integer patientId, Integer doctorId, Date begin, Date end, Integer frequency) throws ObjectNotFoundException, InvalidDateRangeException;
+    public void defineObservationPeriod(Integer patientId, Integer doctorId, Integer deviceId,Date begin, Date end, Integer frequency) throws ObjectNotFoundException, InvalidDateRangeException;
 
     /**
      * 

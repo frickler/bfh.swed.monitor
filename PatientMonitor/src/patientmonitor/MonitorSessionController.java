@@ -10,6 +10,7 @@ import java.util.Set;
 import patient.exceptions.DeviceNotAssignedException;
 import patient.exceptions.InvalidDateRangeException;
 import patient.exceptions.ObjectNotFoundException;
+import patientmonitor.definition.Device;
 import patientmonitor.definition.Doctor;
 import patientmonitor.definition.EntityManager;
 import patientmonitor.definition.ObservationPeriod;
@@ -67,8 +68,9 @@ public class MonitorSessionController implements SessionController{
      * @param end
      * @param frequency
      */
-    public void defineObservationPeriod(Integer patientId, Integer doctorId, Date begin, Date end, Integer frequency) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void defineObservationPeriod(Integer patientId, Integer doctorId, Integer deviceId,Date begin, Date end, Integer frequency) throws ObjectNotFoundException {
+        this.em.createObservationPeriod(doctorId, patientId, deviceId, begin, end, frequency);
+
     }
 
     public void deviceReturn(Integer deviceId) {

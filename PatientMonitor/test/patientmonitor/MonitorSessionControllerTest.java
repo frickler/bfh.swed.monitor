@@ -12,6 +12,7 @@ import java.util.Set;
 import org.junit.Test;
 import patient.exceptions.InvalidDateRangeException;
 import patient.exceptions.ObjectNotFoundException;
+import patientmonitor.definition.Device;
 import patientmonitor.definition.Doctor;
 import patientmonitor.definition.EntityManager;
 import static org.junit.Assert.*;
@@ -98,11 +99,11 @@ public class MonitorSessionControllerTest {
      * Test of defineObservationPeriod method, of class MonitorSessionController.
      */
     @Test
-    public void testDefineObservationPeriod() {
+    public void testDefineObservationPeriod() throws ObjectNotFoundException{
         FakeEntityManager em = new FakeEntityManager();
         Integer expected = (em.getObservationPeriods().size() + 1);
         MonitorSessionController c = new MonitorSessionController(new MonitorDoctor(1, "password", "Hans", "Maulwurf"), em);
-        c.defineObservationPeriod(3, 3, new GregorianCalendar(2010, 6, 3).getTime(), new GregorianCalendar(2010, 7, 3).getTime(), 60);
+        c.defineObservationPeriod(3, 3, 3,new GregorianCalendar(2010, 6, 3).getTime(), new GregorianCalendar(2010, 7, 3).getTime(), 60);
         assertEquals(expected, (Integer) em.getObservationPeriods().size());
     }
 

@@ -6,6 +6,7 @@
 package patientmonitor;
 
 
+import java.util.GregorianCalendar;
 import java.util.Set;
 import org.junit.After;
 import org.junit.Before;
@@ -112,6 +113,16 @@ public class FakeEntityManagerTest {
 
         periods = this.manager.getObservationPeriodsOfPatient(3);
         assertEquals(0, periods.size());
+    }
+
+
+    @Test
+    public void testCreateObservationPeriod() throws Exception {
+        MonitorObservationPeriod op = (MonitorObservationPeriod)this.manager.createObservationPeriod(3, 3, 3, new GregorianCalendar(2010,6,6).getTime(), new GregorianCalendar(2010,7,6).getTime(), 70);
+        assertNotNull(op);
+        Integer exceptedId = op.getPeriodId() + 1;
+        op = (MonitorObservationPeriod)this.manager.createObservationPeriod(4, 4, 4, new GregorianCalendar(2010,6,6).getTime(), new GregorianCalendar(2010,7,6).getTime(), 70);
+        assertEquals(exceptedId,op.getPeriodId());
     }
 
 }

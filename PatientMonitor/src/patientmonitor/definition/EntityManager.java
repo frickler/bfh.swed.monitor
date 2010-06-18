@@ -5,6 +5,7 @@
 
 package patientmonitor.definition;
 
+import java.util.Date;
 import java.util.Set;
 import patient.exceptions.ObjectNotFoundException;
 
@@ -69,5 +70,18 @@ public interface EntityManager {
      */
     public Set<ObservationPeriod> getObservationPeriodsOfPatient(Integer patientId) throws ObjectNotFoundException;
 
-
+    /**
+     * Creates a new ObservationPeriod Object and returns it
+     *
+     * @param doctorId
+     * @param patientId
+     * @param deviceId
+     * @param from
+     * @param to
+     * @param frequency
+     * @return
+     * @throws ObjectNotFoundException
+     */
+    public ObservationPeriod createObservationPeriod(Integer doctorId, Integer patientId, Integer deviceId,
+                                                     Date from, Date to, Integer frequency)throws ObjectNotFoundException;
 }

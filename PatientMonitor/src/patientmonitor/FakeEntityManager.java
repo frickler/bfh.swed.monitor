@@ -31,7 +31,7 @@ public class FakeEntityManager implements EntityManager{
     public FakeEntityManager() {
         this.devices = new HashSet<Device>();
         for (int i=1; i<=30;i++) {
-           Device d = new MeasureDevice(i);
+           Device d = new MeasureDevice(i+1);
            this.devices.add(d);
         }
 
@@ -54,7 +54,7 @@ public class FakeEntityManager implements EntityManager{
             date = new GregorianCalendar(2010,Calendar.JULY,(int)((Math.random() * 29)+1));
             Date to = date.getTime();
             try {
-                this.observations.add(new MonitorObservationPeriod(i,this.getDoctor(5),this.getDevice(5),this.getPatient(5), from, to,i));
+                this.observations.add(new MonitorObservationPeriod(i+1,this.getDoctor(5),this.getDevice(5),this.getPatient(5), from, to,i));
             } catch (Exception e) {
                 
             }
@@ -93,6 +93,14 @@ public class FakeEntityManager implements EntityManager{
         this.patients.add(p);
         return p;
         
+    }
+
+    public ObservationPeriod createObservationPeriod(Integer doctorId, Integer patientId, Integer deviceId,
+                                                     Date from, Date to, Integer frequency)
+                                                     throws ObjectNotFoundException {
+           ObservationPeriod op = new MonitorObservationPeriod(this.observations.size()+1, this.getDoctor(doctorId), this.getDevice(deviceId),this.getPatient(patientId),from, to, frequency);
+           this.observations.add(op);
+           return op;
     }
 
     public ObservationPeriod getObservationPeriod(Integer observationPeriodId) throws ObjectNotFoundException {
