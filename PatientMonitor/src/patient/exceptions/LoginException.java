@@ -6,7 +6,8 @@
 package patient.exceptions;
 
 /**
- *
+ * This exception is thrown, if no valid login is provided
+ * 
  * @author krigu
  */
 public class LoginException extends Exception {

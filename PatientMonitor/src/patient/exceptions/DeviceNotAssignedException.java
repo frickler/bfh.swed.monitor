@@ -6,7 +6,8 @@
 package patient.exceptions;
 
 /**
- *
+ * This Exception is thrown, when a operation requires a Device but no
+ * device is attached
  * @author krigu
  */
 public class DeviceNotAssignedException extends Exception {

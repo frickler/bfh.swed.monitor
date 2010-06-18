@@ -110,7 +110,7 @@ public class FakeEntityManagerTest {
         Set<ObservationPeriod> periods = this.manager.getObservationPeriodsOfPatient(5);
         assertNotNull(periods);
         assertEquals(30,periods.size());
-
+        
         periods = this.manager.getObservationPeriodsOfPatient(3);
         assertEquals(0, periods.size());
     }

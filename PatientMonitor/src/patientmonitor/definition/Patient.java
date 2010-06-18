@@ -6,11 +6,16 @@
 package patientmonitor.definition;
 
 /**
+ * This interface represents a patient
  *
  * @author krigu
  */
 public interface Patient {
 
+    /**
+     *
+     * @return the patients ID
+     */
     public Integer getPatientId();
 
 }

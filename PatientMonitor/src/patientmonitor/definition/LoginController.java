@@ -8,7 +8,7 @@ package patientmonitor.definition;
 import patient.exceptions.LoginException;
 
 /**
- *
+ * Represents a login controller
  * @author krigu
  */
 public interface LoginController {

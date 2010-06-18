@@ -10,7 +10,7 @@ import java.util.Set;
 import patient.exceptions.InvalidDateRangeException;
 
 /**
- *
+ * This interface represents an observation period
  * @author krigu
  */
 public interface ObservationPeriod {

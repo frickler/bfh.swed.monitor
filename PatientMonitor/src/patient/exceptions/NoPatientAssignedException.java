@@ -6,7 +6,9 @@
 package patient.exceptions;
 
 /**
- *
+ * This Exception is thrown, when a operation requires a patient but no
+ * patient is attached
+ * 
  * @author krigu
  */
 public class NoPatientAssignedException extends Exception {

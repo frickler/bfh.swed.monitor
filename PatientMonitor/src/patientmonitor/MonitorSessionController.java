@@ -24,14 +24,14 @@ import patientmonitor.definition.SessionController;
 public class MonitorSessionController implements SessionController{
 
     private EntityManager em;
-    private Doctor d;
+    private Doctor doctor;
 
     public MonitorSessionController(Doctor d,EntityManager em) {
         if (d == null){
             throw new IllegalArgumentException("Doctor can't be null");
         }
         this.em = em;
-        this.d = d;
+        this.doctor = d;
     }
 
     /**
@@ -56,7 +56,7 @@ public class MonitorSessionController implements SessionController{
             // No patient found -> create new
             p = em.createPatient(patientName, patientPrename);            
         }
-        d.addPatient(p);
+        doctor.addPatient(p);
 
     }
 
@@ -73,8 +73,9 @@ public class MonitorSessionController implements SessionController{
 
     }
 
-    public void deviceReturn(Integer deviceId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void deviceReturn(Integer deviceId) throws ObjectNotFoundException {
+        Device device = em.getDevice(deviceId);
+        device.setPatient(null);
     }
 
     public Set<ObservationPeriod> consultObservationPeriod(Integer patientId) throws ObjectNotFoundException {

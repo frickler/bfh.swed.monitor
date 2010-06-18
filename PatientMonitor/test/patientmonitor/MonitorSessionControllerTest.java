@@ -134,7 +134,13 @@ public class MonitorSessionControllerTest {
         EntityManager em = new FakeEntityManager();
         SessionController s = new MonitorSessionController(d, em);
 
-        s.consultObservationPeriod(1);
+        Set<ObservationPeriod> o = s.consultObservationPeriod(3);
+
+        assertNotNull(o);
+        // The 30 comes from the FakeEntityManager
+                // Open defineObservation period
+        
+        throw new ObjectNotFoundException();
 
     }
 
@@ -167,14 +173,6 @@ public class MonitorSessionControllerTest {
             assertEquals(result.size(), ml.size());
         } catch (Exception e) {
         }
-
-    }
-
-    /**
-     * Test of assignDoctorPatient method, of class MonitorSessionController.
-     */
-    @Test
-    public void testAssignDoctorPatient_4args() throws Exception {
 
     }
 

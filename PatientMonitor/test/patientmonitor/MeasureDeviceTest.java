@@ -10,6 +10,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import patientmonitor.definition.Patient;
 import static org.junit.Assert.*;
 
 /**
@@ -50,6 +51,8 @@ public class MeasureDeviceTest {
      */
     @Test
     public void testPerformMeasure() throws Exception {
+
+        this.device.setPatient(new MonitorPatient(1, "vorname", "name"));
         float result = this.device.performMeasure();
 
         assertTrue(result > 0.0);

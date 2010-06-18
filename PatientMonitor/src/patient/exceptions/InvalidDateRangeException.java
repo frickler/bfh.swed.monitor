@@ -6,7 +6,9 @@
 package patient.exceptions;
 
 /**
+ * This exception is thrown, when a invalid time period is passed.
  *
+ * For example if the from-date is smaller then the to-date or a date is null
  * @author krigu
  */
 public class InvalidDateRangeException extends Exception {

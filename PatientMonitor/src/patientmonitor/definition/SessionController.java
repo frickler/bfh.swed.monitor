@@ -13,7 +13,7 @@ import patient.exceptions.ObjectNotFoundException;
 import patientmonitor.Measure;
 
 /**
- * 
+ * This interface represents a SessionController
  *
  * @author krigu
  */

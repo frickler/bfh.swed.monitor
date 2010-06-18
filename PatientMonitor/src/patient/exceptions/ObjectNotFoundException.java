@@ -6,7 +6,8 @@
 package patient.exceptions;
 
 /**
- *
+ * this exception is thrown when a method tries to get a object by an id and the
+ * object can't be found from the EntityManager
  * @author krigu
  */
 public class ObjectNotFoundException extends Exception {

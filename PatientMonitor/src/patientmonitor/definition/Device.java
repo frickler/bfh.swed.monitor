@@ -35,8 +35,16 @@ public interface Device {
      */
     public Integer getDeviceId();
 
+    /**
+     * Sets the patient, which is assigned to this device
+     * @param p Patient
+     */
     public void setPatient(Patient p);
 
+    /**
+     * returns the patient, which is assigned to this device
+     * @param p Patient
+     */
     public Patient getPatient();
 
 }
