@@ -6,16 +6,20 @@
 package patientmonitor;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
+import javax.swing.text.html.parser.Entity;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import patientmonitor.definition.Doctor;
+import patientmonitor.definition.EntityManager;
 import static org.junit.Assert.*;
 import patientmonitor.definition.ObservationPeriod;
 import patientmonitor.definition.Patient;
 import patientmonitor.definition.SessionController;
+import sun.util.calendar.Gregorian;
 
 /**
  *
@@ -28,8 +32,8 @@ public class MonitorSessionControllerTest {
      */
    @Test
    public void testLogout(){
-
-       SessionController c = new MonitorSessionController(new MonitorDoctor(1, "test", "test", "test"));
+        EntityManager em = new FakeEntityManager();
+       SessionController c = new MonitorSessionController(new MonitorDoctor(1, "test", "test", "test"),em);
        c.logout();
 
    }
@@ -46,8 +50,8 @@ public class MonitorSessionControllerTest {
         String firstname = "firstname";
 
         Doctor d = new MonitorDoctor(1, "test", "test", "test");
-
-        SessionController s = new MonitorSessionController(d);
+        EntityManager em = new FakeEntityManager();
+        SessionController s = new MonitorSessionController(d,em);
         s.assignDoctorPatient(null, name, firstname);
 
         assertNotNull(d.getAssignedPatients());
@@ -71,10 +75,10 @@ public class MonitorSessionControllerTest {
     @Test
     public void assignDoctorPatientExistingPatientTest(){
 
-
+        EntityManager em = new FakeEntityManager();
         Doctor d = new MonitorDoctor(1, "test", "test", "test");
 
-        SessionController s = new MonitorSessionController(d);
+        SessionController s = new MonitorSessionController(d,em);
 
         s.assignDoctorPatient(1, "Maulwurf1", "Hans");
 
@@ -97,16 +101,10 @@ public class MonitorSessionControllerTest {
      */
     @Test
     public void testDefineObservationPeriod() {
-        System.out.println("defineObservationPeriod");
-        Integer patientId = null;
-        Integer doctorId = null;
-        Date begin = null;
-        Date end = null;
-        Integer frequency = null;
-        MonitorSessionController instance = null;
-        instance.defineObservationPeriod(patientId, doctorId, begin, end, frequency);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        EntityManager em = new FakeEntityManager();
+        MonitorSessionController c = new MonitorSessionController(new MonitorDoctor(1,"password","Hans","Maulwurf"),em);
+        c.defineObservationPeriod(3, 3, new GregorianCalendar(2010,6,3).getTime(), new GregorianCalendar(2010,7,3).getTime(), 60);
+
     }
 
     /**

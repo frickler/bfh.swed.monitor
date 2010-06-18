@@ -25,11 +25,11 @@ public class MonitorSessionController implements SessionController{
     private EntityManager em;
     private Doctor d;
 
-    public MonitorSessionController(Doctor d) {
+    public MonitorSessionController(Doctor d,EntityManager em) {
         if (d == null){
             throw new IllegalArgumentException("Doctor can't be null");
         }
-        this.em = new FakeEntityManager();
+        this.em = em;
         this.d = d;
     }
 
