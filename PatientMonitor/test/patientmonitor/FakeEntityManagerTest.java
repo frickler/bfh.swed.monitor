@@ -118,10 +118,17 @@ public class FakeEntityManagerTest {
 
     @Test
     public void testCreateObservationPeriod() throws Exception {
-        MonitorObservationPeriod op = (MonitorObservationPeriod)this.manager.createObservationPeriod(3, 3, 3, new GregorianCalendar(2010,6,6).getTime(), new GregorianCalendar(2010,7,6).getTime(), 70);
+
+        Patient p = this.manager.getPatient(3);
+        Device de = this.manager.getDevice(3);
+        Doctor d = this.manager.getDoctor(3);
+        MonitorObservationPeriod op = (MonitorObservationPeriod)this.manager.createObservationPeriod(d,p,de, new GregorianCalendar(2010,6,6).getTime(), new GregorianCalendar(2010,7,6).getTime(), 70);
         assertNotNull(op);
         Integer exceptedId = op.getPeriodId() + 1;
-        op = (MonitorObservationPeriod)this.manager.createObservationPeriod(4, 4, 4, new GregorianCalendar(2010,6,6).getTime(), new GregorianCalendar(2010,7,6).getTime(), 70);
+       p = this.manager.getPatient(4);
+        de = this.manager.getDevice(4);
+        d = this.manager.getDoctor(4);
+        op = (MonitorObservationPeriod)this.manager.createObservationPeriod(d, p, de, new GregorianCalendar(2010,6,6).getTime(), new GregorianCalendar(2010,7,6).getTime(), 70);
         assertEquals(exceptedId,op.getPeriodId());
     }
 

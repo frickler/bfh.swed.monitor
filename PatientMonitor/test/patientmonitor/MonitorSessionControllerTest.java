@@ -102,9 +102,10 @@ public class MonitorSessionControllerTest {
     public void testDefineObservationPeriod() throws ObjectNotFoundException{
         FakeEntityManager em = new FakeEntityManager();
         Integer expected = (em.getObservationPeriods().size() + 1);
-        MonitorSessionController c = new MonitorSessionController(new MonitorDoctor(1, "password", "Hans", "Maulwurf"), em);
-        c.defineObservationPeriod(3, 3, 3,new GregorianCalendar(2010, 6, 3).getTime(), new GregorianCalendar(2010, 7, 3).getTime(), 60);
+        MonitorSessionController c = new MonitorSessionController(em.getDoctor(3), em);
+        c.defineObservationPeriod(3, 3,new GregorianCalendar(2010, 6, 3).getTime(), new GregorianCalendar(2010, 7, 3).getTime(), 60);
         assertEquals(expected, (Integer) em.getObservationPeriods().size());
+        Patient p = em.getPatient(3);
     }
 
     /**

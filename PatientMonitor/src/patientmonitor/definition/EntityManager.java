@@ -82,6 +82,6 @@ public interface EntityManager {
      * @return
      * @throws ObjectNotFoundException
      */
-    public ObservationPeriod createObservationPeriod(Integer doctorId, Integer patientId, Integer deviceId,
+    public ObservationPeriod createObservationPeriod(Doctor doctor, Patient patient, Device device,
                                                      Date from, Date to, Integer frequency)throws ObjectNotFoundException;
 }

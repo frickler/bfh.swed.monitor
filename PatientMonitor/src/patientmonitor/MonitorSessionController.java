@@ -68,8 +68,10 @@ public class MonitorSessionController implements SessionController{
      * @param end
      * @param frequency
      */
-    public void defineObservationPeriod(Integer patientId, Integer doctorId, Integer deviceId,Date begin, Date end, Integer frequency) throws ObjectNotFoundException {
-        this.em.createObservationPeriod(doctorId, patientId, deviceId, begin, end, frequency);
+    public void defineObservationPeriod(Integer patientId, Integer deviceId,Date begin, Date end, Integer frequency) throws ObjectNotFoundException {
+        Patient p = this.em.getPatient(patientId);
+        Device d = this.em.getDevice(deviceId);
+        this.em.createObservationPeriod(this.doctor, p, d, begin, end, frequency);
 
     }
 

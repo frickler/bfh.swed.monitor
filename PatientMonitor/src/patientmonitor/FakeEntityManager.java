@@ -95,10 +95,10 @@ public class FakeEntityManager implements EntityManager{
         
     }
 
-    public ObservationPeriod createObservationPeriod(Integer doctorId, Integer patientId, Integer deviceId,
+    public ObservationPeriod createObservationPeriod(Doctor doctor, Patient patient, Device device,
                                                      Date from, Date to, Integer frequency)
                                                      throws ObjectNotFoundException {
-           ObservationPeriod op = new MonitorObservationPeriod(this.observations.size()+1, this.getDoctor(doctorId), this.getDevice(deviceId),this.getPatient(patientId),from, to, frequency);
+           ObservationPeriod op = new MonitorObservationPeriod(this.observations.size()+1,doctor, device,patient,from, to, frequency);
            this.observations.add(op);
            return op;
     }
